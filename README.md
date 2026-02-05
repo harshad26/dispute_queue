@@ -132,7 +132,7 @@ curl -X POST http://localhost:3000/webhooks/disputes \
   -H "Content-Type: application/json" \
   -d '{
     "id": "evt_test_001",
-    "type": "charge.dispute.created",
+    "type": "charge.dispute.updated",
     "data": {
       "object": {
         "id": "dp_test_001",
