@@ -1,0 +1,17 @@
+<div style="max-width: 400px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+  <h2 style="text-align: center; margin-bottom: 20px;">Sign In</h2>
+  
+  <%= form_with url: session_path do |form| %>
+    <div style="margin-bottom: 15px;">
+      <%= form.label :email_address, style: "display: block; margin-bottom: 5px;" %>
+      <%= form.email_field :email_address, required: true, autofocus: true, style: "width: 100%; padding: 8px; box-sizing: border-box;" %>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <%= form.label :password, style: "display: block; margin-bottom: 5px;" %>
+      <%= form.password_field :password, required: true, autocomplete: "current-password", style: "width: 100%; padding: 8px; box-sizing: border-box;" %>
+    </div>
+
+    <%= form.submit "Sign In", class: "btn", style: "width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;" %>
+  <% end %>
+</div>

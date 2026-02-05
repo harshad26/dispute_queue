@@ -1,0 +1,37 @@
+<div style="margin-bottom: 20px;">
+  <%= link_to "← Back to Reports", reports_money_math_path, style: "color: #666; text-decoration: none;" %>
+</div>
+
+<h2>Time-To-Decision Metrics</h2>
+<p style="color: #666; margin-bottom: 20px;">
+  Resolution time (P50 and P90) for disputes closed in each week.
+</p>
+
+<div class="card">
+  <table>
+    <thead>
+      <tr>
+        <th>Week of</th>
+        <th>Disputes Closed</th>
+        <th>P50 (Median) Days</th>
+        <th>P90 Days</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @stats.any? %>
+        <% @stats.each do |stat| %>
+          <tr>
+            <td><%= stat[:week].strftime("%b %d, %Y") %></td>
+            <td><%= stat[:count] %></td>
+            <td><%= stat[:p50_days] %> days</td>
+            <td><%= stat[:p90_days] %> days</td>
+          </tr>
+        <% end %>
+      <% else %>
+        <tr>
+          <td colspan="4" style="text-align: center; color: #888;">No closed disputes found.</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

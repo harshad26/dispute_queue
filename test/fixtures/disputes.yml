@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  charge: one
+  amount_cents: 1000
+  status: open
+  provider_id: "disp_001"
+
+two:
+  charge: two
+  amount_cents: 2500
+  status: closed_won
+  provider_id: "disp_002"

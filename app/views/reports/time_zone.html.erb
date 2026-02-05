@@ -1,0 +1,24 @@
+<h1>🌍 Time Zone Reporting (Today)</h1>
+<p style="color: #666; margin-bottom: 30px;">
+  Dispute volumes grouped by "Today" in different time zones. Shows how boundary handling affects daily reporting.
+</p>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px;">
+  <% @data.each do |zone, stats| %>
+    <div class="card">
+      <div style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px;">
+        <h3 style="margin: 0;"><%= zone %></h3>
+        <span style="font-size: 13px; color: #888;">Local Time: <%= stats[:local_time] %></span>
+      </div>
+      
+      <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="color: #555;">Disputes Created</span>
+        <span style="font-weight: bold;"><%= stats[:count] %></span>
+      </div>
+      <div style="display: flex; justify-content: space-between;">
+         <span style="color: #555;">Total Volume (All Currencies)</span>
+         <span style="font-weight: bold;"><%= stats[:volume] / 100.0 %></span>
+      </div>
+    </div>
+  <% end %>
+</div>

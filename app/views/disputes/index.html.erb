@@ -1,0 +1,44 @@
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+  <h1>Review Queue</h1>
+</div>
+
+<% if @disputes.any? %>
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>Dispute ID</th>
+          <th>Charge</th>
+          <th>Amount</th>
+          <th>Reason</th>
+          <th>Created</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @disputes.each do |dispute| %>
+          <tr>
+            <td>
+              <%= link_to dispute.id, dispute_path(dispute), style: "font-weight: bold; color: #000;" %>
+              <div style="font-size: 12px; color: #888;"><%= dispute.provider_id %></div>
+            </td>
+            <td><%= dispute.charge.provider_id %></td>
+            <td><%= number_to_currency(dispute.amount_cents / 100.0, unit: dispute.charge.currency.upcase + " ") %></td>
+            <td>Fraudulent</td>
+            <td><%= time_ago_in_words(dispute.created_at) %> ago</td>
+            <td><span class="status-badge status-<%= dispute.status %>"><%= dispute.status.humanize %></span></td>
+            <td>
+              <%= link_to "Review", dispute_path(dispute), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% else %>
+  <div style="text-align: center; padding: 60px; color: #888;">
+    <p style="font-size: 1.2em;">No disputes found.</p>
+    <%= link_to "Simulate Webhook", new_webhooks_simulated_path, style: "color: #006064;" %>
+  </div>
+<% end %>

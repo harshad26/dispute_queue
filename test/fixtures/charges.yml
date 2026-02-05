@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount_cents: 1000
+  currency: usd
+  customer_email: "test1@example.com"
+  status: "succeeded"
+  provider_id: "ch_001"
+
+two:
+  amount_cents: 2500
+  currency: usd
+  customer_email: "test2@example.com"
+  status: "succeeded"
+  provider_id: "ch_002"

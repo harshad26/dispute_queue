@@ -1,0 +1,39 @@
+<h1>💰 Money Math: Disputed Volume by Currency</h1>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px;">
+  <% @total_volume.each do |currency, amount_cents| %>
+    <div class="card" style="text-align: center;">
+       <div style="font-size: 14px; color: #888; text-transform: uppercase; font-weight: bold; margin-bottom: 5px;">
+         <%= currency %> Total
+       </div>
+       <div style="font-size: 32px; font-weight: 700;">
+         <%= number_to_currency(amount_cents / 100.0, unit: currency.upcase + " ") %>
+       </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="card">
+  <h3>Breakdown by Status</h3>
+  <table>
+     <thead>
+       <tr>
+         <th>Currency</th>
+         <th>Status</th>
+         <th>Amount</th>
+       </tr>
+     </thead>
+     <tbody>
+       <% @aggregates.each do |(currency, status), amount_cents| %>
+         <tr>
+           <td style="text-transform: uppercase; font-weight: 500;"><%= currency %></td>
+           <td><span class="status-badge status-<%= status %>"><%= status.humanize %></span></td>
+           <td><%= number_to_currency(amount_cents / 100.0, unit: currency.upcase + " ") %></td>
+         </tr>
+       <% end %>
+       <% if @aggregates.empty? %>
+          <tr><td colspan="3" style="text-align: center; color: #888;">No data available.</td></tr>
+       <% end %>
+     </tbody>
+  </table>
+</div>

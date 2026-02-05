@@ -1,0 +1,19 @@
+<div style="max-width: 600px; margin: 40px auto; font-family: system-ui;">
+  <h1>Webhook Simulator</h1>
+  
+  <p>Trigger a simulated "charge.dispute.created" event from an external payment provider.</p>
+  
+  <% if flash[:notice] %>
+    <div style="background: #e0f7fa; color: #006064; padding: 10px; border-radius: 4px; margin-bottom: 20px;">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <%= button_to "Trigger Dispute Webhook", webhooks_simulated_path, method: :post, 
+      style: "background: #000; color: #fff; border: none; padding: 12px 24px; font-size: 16px; cursor: pointer; border-radius: 6px;" %>
+      
+  <div style="margin-top: 40px; border-top: 1px solid #ccc; padding-top: 20px;">
+    <h3>Debug Info</h3>
+    <p>Using <code>DisputeIngestionJob</code> backed by Sidekiq.</p>
+  </div>
+</div>
